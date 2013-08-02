@@ -1,0 +1,7 @@
+Testsuite: gradebook.model.CourseTest
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0.017 sec
+------------- Standard Output ---------------
+Average is:78.625
+------------- ---------------- ---------------
+
+Testcase: emptyClassAveragesTest took 0.003 sec
