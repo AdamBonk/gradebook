@@ -1,83 +1,80 @@
-package main.java.gradebook.model;
-
-import main.java.gradebook.model.*;
-import java.util.Iterator;
+package gradebook.model;
 
 
-public class Class extends Course{
-/*
-	formatting of semester can be formatted as
-	"SPRING2013"
+/** Class represents one instance of an instance of a course
+*   and implements the delegation pattern by accepting a
+*   course in as some stock information, but allowing certain
+*   information to be
+*   changed (such as the description, if the class is a
+*   special kind of one course)
 */
-	private String semester;
-	private GradebookStorage sections;
+public class Class {
+/*
+    formatting of semester can be formatted as
+    "SPRING2013"
+*/
+    private String semester;
+    private Course courseInfo;
+    private String description;
+    private GradebookStorage sections;
 //  INSTRUCTOR
 
-
-//	BEGIN CONSTRUCTORS
-	public Class(Course course, String semester){
-		super(course);
-		this.semester=semester;
-	}
-	public Class(Course course, String semester, GradebookStorage sections){
-		super(course);
-		this.semester=semester;
-		this.sections=sections;
-	}
-	public Class(Course course, String semester, GradebookStorage sections, String newDescription){
-		super(course);
-		this.semester=semester;
-		this.sections=sections;
-		this.description=newDescription;
-	}
-//	END CONSTRUCTORS
+    private static final int GRADEA = 4;
+    private static final int GRADEB = 3;
+    private static final int GRADEC = 2;
+    private static final int GRADED = 1;
+    private static final int GRADEF = 0;
 
 
-/*	Add error catching for section that already exists*/
-	public void addSection(Section section ){
-		sections.add(section);
-	}
+
+//  BEGIN CONSTRUCTORS
+    public Class(Course course , String semester) {
+        courseInfo = course;
+        courseInfo.addClass(this);
+        this.semester = semester;
+        sections = new GradebookStorage();
+    }
+    public Class(Course course , String semester ,
+        GradebookStorage sections) {
+        courseInfo    = course;
+        courseInfo.addClass(this);
+        this.semester = semester;
+        this.sections = sections;
+    }
+    public Class(Course course , String semester ,
+        GradebookStorage sections , String newDescription) {
+        courseInfo       = course;
+        courseInfo.addClass(this);
+        this.semester    = semester;
+        this.sections    = sections;
+        this.description = newDescription;
+    }
+//  END CONSTRUCTORS
 
 
-	public double getAverageScore(){
-		int numberOfSections = sections.size();
-		int totalVal=0;
-		Iterator sectionIt = sections.iterator();
-		while(sectionIt.hasNext()){
-			totalVal+=((Section)sectionIt.next()).getAverageScore(this);
-		}
-		return (totalVal/numberOfSections);
-	}
+/*  Add error catching for section that already exists*/
+    public void addSection(Section section) {
+        sections.add(section);
+    }
 
+    public GradebookStorage getSections() {
+        return sections;
+    }
 
-	public char getAverageLetterGrade(){
-		int numberOfSections = sections.size();
-		double letterTotalVal=0;
-		Iterator sectionIt = sections.iterator();
-		while(sectionIt.hasNext()){
-			char letter = ((Section)sectionIt.next()).getAverageLetterGrade(this);
-			int letterVal=0;
-			switch(letter){
-				case 'A': letterVal=4;
-				break;
-				case 'B': letterVal=3;
-				break;
-				case 'C': letterVal=2;
-				break;
-				case 'D': letterVal=1;
-				break;
-				case 'F': letterVal=0;
-				break;
-			}
-			letterTotalVal+=letterVal;
-		}
-		double finalVal= letterTotalVal/numberOfSections;
-		if(finalVal==4) 		return 'A';
-		else if(finalVal>=3) 	return 'B';
-		else if(finalVal>=2)	return 'C';
-		else if(finalVal>=1)	return 'D';
-		else					return 'F';
+    public double getAverageScore() {
+        return (new GradingScheme()).findAverage(this);
+    }
 
-	}
+    public char getAverageLetterGrade() {
+        return (new GradingScheme()).determineLetter(getAverageScore());
+    }
+
+    public String getDescription() {
+        if (description == null) {
+            return courseInfo.getDescription();
+        } else {
+            return description;
+        }
+    }
 
 }
