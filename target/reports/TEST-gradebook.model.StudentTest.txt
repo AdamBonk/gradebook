@@ -1,7 +1,0 @@
-Testsuite: gradebook.model.StudentTest
-Tests run: 4, Failures: 0, Errors: 0, Time elapsed: 0.016 sec
-
-Testcase: getClassSectionTest took 0.001 sec
-Testcase: enrollTest took 0 sec
-Testcase: getAverageScoreTest took 0.001 sec
-Testcase: letterGradeTest took 0 sec

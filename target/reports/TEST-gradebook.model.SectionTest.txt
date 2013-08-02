@@ -1,9 +1,0 @@
-Testsuite: gradebook.model.SectionTest
-Tests run: 3, Failures: 0, Errors: 0, Time elapsed: 0.021 sec
-------------- Standard Output ---------------
-78.625
-------------- ---------------- ---------------
-
-Testcase: averageTest took 0.004 sec
-Testcase: addGradebookCategoryToStudentsTest took 0 sec
-Testcase: addStudentsTest took 0 sec
