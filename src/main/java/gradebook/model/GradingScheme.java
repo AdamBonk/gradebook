@@ -36,8 +36,8 @@ public class GradingScheme {
 
     public double findAverage(GradebookCategory category) {
         GradebookStorage items = category.getItems();
-        double categoryTotal = 0;
-        int categorySize     = items.size();
+        double categoryTotal   = 0;
+        int categorySize       = items.size();
 
         if (categorySize == 0) {
             return IGNORE;
@@ -47,6 +47,7 @@ public class GradingScheme {
 
         while (itemsIterator.hasNext()) {
             GradebookItem curItem = (GradebookItem) itemsIterator.next();
+
             if (curItem.getScore() == IGNORE) {
                 categorySize--;
             } else {
@@ -66,16 +67,19 @@ public class GradingScheme {
     public double findAverage(Student student , Section section) {
         GradebookStorage categories =
         student.getGradebookCategoriesForSection(section);
+
         Iterator categoriesIterator = categories.iterator();
         double total = 0;
 
         while (categoriesIterator.hasNext()) {
             GradebookCategory currentCategory = (GradebookCategory)
             categoriesIterator.next();
+
             double curNum = findAverage(currentCategory);
             if (curNum != IGNORE) {
                 total += curNum * currentCategory.getWeight();
             }
+
         }
         return total;
 
@@ -88,9 +92,11 @@ public class GradingScheme {
     public double findAverage(Section section) {
         int numberOfStudents = section.getSize();
         double totalVal      = 0;
+
         if (numberOfStudents == 0) {
             return IGNORE;
         }
+
         Iterator studentIt   = section.getStudents().iterator();
 
         while (studentIt.hasNext()) {
@@ -103,11 +109,14 @@ public class GradingScheme {
     public double findAverage(Class aClass) {
         GradebookStorage sections = aClass.getSections();
         int numberOfSections = sections.size();
+
         if (numberOfSections == 0) {
             return IGNORE;
         }
-        double totalVal         = 0;
+
+        double totalVal      = 0;
         Iterator sectionIt   = sections.iterator();
+
         while (sectionIt.hasNext()) {
             double curAvg = findAverage((Section) sectionIt.next());
             if (curAvg == IGNORE) {
@@ -116,6 +125,7 @@ public class GradingScheme {
                 totalVal += curAvg;
             }
         }
+
         if (numberOfSections == 0) {
             return IGNORE;
         }
@@ -126,10 +136,12 @@ public class GradingScheme {
 
     public double findAverage(Course course) {
         GradebookStorage classes = course.getClasses();
-        int numberOfClasses = classes.size();
-        double val = 0;
-        Iterator classIt = classes.iterator();
+        int numberOfClasses      = classes.size();
+        double val               = 0;
+        Iterator classIt         = classes.iterator();
+
         while (classIt.hasNext()) {
+
             double classAvg = findAverage((Class) classIt.next());
 
             if (classAvg == IGNORE) {
@@ -137,7 +149,9 @@ public class GradingScheme {
             } else {
                 val += classAvg;
             }
+
         }
+
         if (numberOfClasses == 0) {
             return IGNORE;
         }

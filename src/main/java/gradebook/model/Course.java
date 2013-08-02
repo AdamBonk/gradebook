@@ -22,18 +22,18 @@ public class Course {
         this.subject      = subject;
         this.name         = name;
         this.courseNumber = courseNumber;
-        classes = new GradebookStorage();
-        preRequesites = new GradebookStorage();
+        classes           = new GradebookStorage();
+        preRequesites     = new GradebookStorage();
 
     }
     public Course(String subject , String name , int courseNumber ,
         String description) {
-        this.subject       = subject;
-        this.name          = name;
-        this.courseNumber  = courseNumber;
-        this.description   = description;
-        classes = new GradebookStorage();
-        preRequesites = new GradebookStorage();
+        this.subject      = subject;
+        this.name         = name;
+        this.courseNumber = courseNumber;
+        this.description  = description;
+        classes           = new GradebookStorage();
+        preRequesites     = new GradebookStorage();
     }
     public Course(String subject , String name , int courseNumber ,
         GradebookStorage preRequesites) {
@@ -41,7 +41,7 @@ public class Course {
         this.name          = name;
         this.courseNumber  = courseNumber;
         this.preRequesites = preRequesites;
-        classes = new GradebookStorage();
+        classes            = new GradebookStorage();
 
     }
     public Course(String subject , String name , int courseNumber ,
@@ -51,7 +51,7 @@ public class Course {
         this.courseNumber  = courseNumber;
         this.preRequesites = preRequesites;
         this.description   = description;
-        classes = new GradebookStorage();
+        classes            = new GradebookStorage();
     }
 //  END CONSTRUCTORS
 

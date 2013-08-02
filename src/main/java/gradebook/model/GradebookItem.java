@@ -17,7 +17,7 @@ public class GradebookItem {
 // BEGIN CONSTRUCTERS
     public GradebookItem(String name) {
         this.name = name;
-        score = IGNORE;
+        score     = IGNORE;
     }
     public GradebookItem(double score) {
         this.score = score;

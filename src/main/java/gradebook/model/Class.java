@@ -19,20 +19,14 @@ public class Class {
     private GradebookStorage sections;
 //  INSTRUCTOR
 
-    private static final int GRADEA = 4;
-    private static final int GRADEB = 3;
-    private static final int GRADEC = 2;
-    private static final int GRADED = 1;
-    private static final int GRADEF = 0;
-
 
 
 //  BEGIN CONSTRUCTORS
     public Class(Course course , String semester) {
-        courseInfo = course;
+        courseInfo    = course;
         courseInfo.addClass(this);
         this.semester = semester;
-        sections = new GradebookStorage();
+        sections      = new GradebookStorage();
     }
     public Class(Course course , String semester ,
         GradebookStorage sections) {

@@ -21,17 +21,17 @@ public class Student {
 //  BEGIN CONSTRUCTORS
 
     public Student(String name) {
-        this.name = name;
-        enrolledClasses = new GradebookStorage();
+        this.name           = name;
+        enrolledClasses     = new GradebookStorage();
         categoriesBySection = new GradebookStorage();
-        completedClasses = new GradebookStorage();
+        completedClasses    = new GradebookStorage();
     }
     public Student(String name , GradebookStorage completedClasses) {
-        this.name = name;
+        this.name             = name;
         this.completedClasses = completedClasses;
-        enrolledClasses = new GradebookStorage();
-        categoriesBySection = new GradebookStorage();
-        completedClasses = new GradebookStorage();
+        enrolledClasses       = new GradebookStorage();
+        categoriesBySection   = new GradebookStorage();
+        completedClasses      = new GradebookStorage();
     }
 //  END CONSTRUCTORS
 

@@ -30,14 +30,14 @@ public class GradebookStorage {
         return storage.size();
     }
 
-
-/*  Implement error catching for incorrect type add*/
     public void add(Object object) {
         storage.add(object);
     }
+
     public void associate(Object aClass , Object section) {
         associations.put(aClass , section);
     }
+
     public Object getAssociated(Object classOrSection) {
         try {
             return associations.get(classOrSection);
@@ -45,10 +45,11 @@ public class GradebookStorage {
             return null;
         }
     }
-    public boolean contains(Object someObject) {
 
+    public boolean contains(Object someObject) {
         return (storage.contains(someObject));
     }
+
     public Object getItemByName(String type , String name) {
         if (type.equals("CATEGORY")) {
             for (Object item : storage) {
